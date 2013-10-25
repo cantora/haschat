@@ -13,6 +13,8 @@ import System.IO (
 import Control.Concurrent (forkIO)
 import qualified Data.Map as Map
 import Safe
+import qualified Data.ByteString.Lazy.Char8 as Char8
+import Data.Digest.Pure.MD5
 
 data Account = Account String String deriving (Eq, Show, Read)
 type AccountDB = Map.Map String String
@@ -52,7 +54,8 @@ sockHandler sock account_db = do
   sockHandler sock account_db
 
 validatePass :: String -> String -> String -> Bool
-validatePass user pass passhash = pass == passhash
+validatePass user pass passhash =
+  (show $ (md5 . Char8.pack) pass)  == passhash
 
 login :: Handle -> AccountDB -> IO ()
 login handle account_db = do
