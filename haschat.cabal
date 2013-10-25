@@ -1,0 +1,15 @@
+name:                haschat
+version:             0.1.0.0
+synopsis:            small single room chat server
+homepage:            http://github.com/cantora/haschat
+license:             MIT
+license-file:        LICENSE
+author:              anthony cantor
+category:            Network
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable haschat
+  main-is:           haschat.hs
+  -- other-modules:       
+  build-depends:     base ==4.5.*, network
