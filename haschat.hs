@@ -15,20 +15,16 @@ import qualified Data.Map as Map
 import Safe
 import qualified Data.ByteString.Lazy.Char8 as Char8
 import Data.Digest.Pure.MD5
+import Data.Maybe
 
 data Account = Account String String deriving (Eq, Show, Read)
 type AccountDB = Map.Map String String
 
 accountDB :: [String] -> AccountDB
 accountDB lns =
-  foldl add_account Map.empty accounts
+  foldl add_account Map.empty $ catMaybes $ map readMay lns
   where
     add_account mp (Account user passhash) = Map.insert user passhash mp
-    accounts = 
-      let
-        fn Nothing xs  = xs
-        fn (Just x) xs = x:xs
-      in foldr (fn . readMay) [] lns
 
 parseArgs :: (Num a) => [String] -> a
 parseArgs []     = 9393
