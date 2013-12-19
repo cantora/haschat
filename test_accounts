@@ -1,3 +1,2 @@
-Account "ADMIN" "c8fb7f2c444eac3335a8dd81189e1023"
-Account "bobo" "3f2c989c6f088e9cd3b657ac115a7e3d"
-Account "J.T. Dawgzone" "6d10a1188db51770bc1eae2c2fbd52b2"
+Account "test-account" "<put an MD5 hash here>"
+Account "another-account" "<md5 hash of password>"
