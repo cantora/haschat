@@ -72,6 +72,13 @@ validatePass user pass passhash =
 
 login :: Handle -> AccountDB -> Chan Msg -> IO ()
 login handle account_db chan = do
+  hPutStr handle $ unlines [
+    "******************************",
+    "* welcome to haschat <(^_^)> *",
+    "* u can has source here:     *",
+    "* github.com/cantora/haschat *",
+    "******************************"
+    ]
   hPutStr handle "i can has user? "
   user <- hGetLine handle
   hPutStr handle "i can has password? "
